@@ -44,7 +44,7 @@ from readalongs.audio_utils import read_audio_from_file
 from readalongs.epub.create_epub import create_epub
 from readalongs.log import LOGGER
 from readalongs.text.make_smil import make_smil
-from readalongs.text.util import save_txt, save_xml
+from readalongs.text.util import save_minimal_index_html, save_txt, save_xml
 
 # get the key from all networks in text module that have a path to 'eng-arpabet'
 # which is needed for the readalongs
@@ -77,7 +77,7 @@ def cli():
 @app.cli.command(
     context_settings=CONTEXT_SETTINGS, short_help="Force align a text and a sound file."
 )
-@click.argument("inputfile", type=click.Path(exists=True, readable=True))
+@click.argument("textfile", type=click.Path(exists=True, readable=True))
 @click.argument("audiofile", type=click.Path(exists=True, readable=True))
 @click.argument("output-base", type=click.Path())
 @click.option(
@@ -133,13 +133,14 @@ def cli():
     "-x", "--output-xhtml", is_flag=True, help="Output simple XHTML instead of XML"
 )
 def align(**kwargs):
-    """Align INPUTFILE and AUDIOFILE and create output files at OUTPUT_BASE.
+    """Align TEXTFILE and AUDIOFILE and create output files as OUTPUT_BASE.* in directory
+    OUTPUT_BASE/.
 
-    inputfile : A path to the input text file (in XML, or plain text with -i option)
+    TEXTFILE:    Input text file path (in XML, or plain text with -i)
 
-    audiofile : A path to the input audio file. Can be any format supported by ffmpeg
+    AUDIOFILE:   Input audio file path, in any format supported by ffmpeg
 
-    output-base : A base name for output files
+    OUTPUT_BASE: Base name for output files
     """
     config = kwargs.get("config", None)
     if config:
@@ -175,22 +176,29 @@ def align(**kwargs):
             f"Cannot write into output folder '{output_dir}'. Please verify permissions."
         )
 
-    output_base = os.path.join(output_dir, os.path.basename(output_dir))
+    output_basename = os.path.basename(output_dir)
+    output_base = os.path.join(output_dir, output_basename)
+    temp_base = None
+    if kwargs["save_temps"]:
+        temp_dir = os.path.join(output_dir, "tempfiles")
+        if not os.path.isdir(temp_dir):
+            if os.path.exists(temp_dir) and kwargs["force_overwrite"]:
+                os.unlink(temp_dir)
+            os.mkdir(temp_dir)
+        temp_base = os.path.join(temp_dir, output_basename)
 
     if kwargs["debug"]:
         LOGGER.setLevel("DEBUG")
     if kwargs["text_input"]:
         if not kwargs["language"]:
             LOGGER.warn("No input language provided, using undetermined mapping")
-        tempfile, kwargs["inputfile"] = create_input_tei(
-            kwargs["inputfile"],
-            text_language=kwargs["language"],
-            save_temps=(output_base if kwargs["save_temps"] else None),
+        tempfile, kwargs["textfile"] = create_input_tei(
+            kwargs["textfile"], text_language=kwargs["language"], save_temps=temp_base,
         )
     if kwargs["output_xhtml"]:
         tokenized_xml_path = "%s.xhtml" % output_base
     else:
-        _, input_ext = os.path.splitext(kwargs["inputfile"])
+        _, input_ext = os.path.splitext(kwargs["textfile"])
         tokenized_xml_path = "%s%s" % (output_base, input_ext)
     if os.path.exists(tokenized_xml_path) and not kwargs["force_overwrite"]:
         raise click.BadParameter(
@@ -215,12 +223,12 @@ def align(**kwargs):
         unit = "w"  # unit could still be None here.
     try:
         results = align_audio(
-            kwargs["inputfile"],
+            kwargs["textfile"],
             kwargs["audiofile"],
             unit=unit,
             bare=bare,
             config=config,
-            save_temps=(output_base if kwargs["save_temps"] else None),
+            save_temps=temp_base,
         )
     except RuntimeError as e:
         LOGGER.error(e)
@@ -246,6 +254,13 @@ def align(**kwargs):
     if kwargs["output_xhtml"]:
         convert_to_xhtml(results["tokenized"])
 
+    save_minimal_index_html(
+        os.path.join(output_dir, "index.html"),
+        os.path.basename(tokenized_xml_path),
+        os.path.basename(smil_path),
+        os.path.basename(audio_path),
+    )
+
     save_xml(tokenized_xml_path, results["tokenized"])
     smil = make_smil(
         os.path.basename(tokenized_xml_path), os.path.basename(audio_path), results
@@ -269,9 +284,9 @@ def epub(**kwargs):
     """
     Convert INPUT smil document to epub with media overlay at OUTPUT
 
-    input : the .smil document
+    INPUT:  The .smil document
 
-    output : the path to the .epub output
+    OUTPUT: Path to the .epub output
     """
     create_epub(kwargs["input"], kwargs["output"], kwargs["unpacked"])
 
@@ -280,7 +295,7 @@ def epub(**kwargs):
     context_settings=CONTEXT_SETTINGS,
     short_help="Prepare XML input to align from plain text.",
 )
-@click.argument("inputfile", type=click.Path(exists=True, readable=True))
+@click.argument("plaintextfile", type=click.Path(exists=True, readable=True))
 @click.argument("xmlfile", type=click.Path())
 @click.option("-d", "--debug", is_flag=True, help="Add debugging messages to logger")
 @click.option(
@@ -294,22 +309,22 @@ def epub(**kwargs):
     help="Set language for input file",
 )
 def prepare(**kwargs):
-    """Prepare XMLFILE for 'readalongs align' from plain text INPUTFILE.
-    INPUTFILE must be plain text encoded in utf-8, with one sentence per line,
+    """Prepare XMLFILE for 'readalongs align' from PLAINTEXTFILE.
+    PLAINTEXTFILE must be plain text encoded in utf-8, with one sentence per line,
     paragraph breaks marked by a blank line, and page breaks marked by two
     blank lines.
 
-    inputfile : A path to the plain text input file
+    PLAINTEXTFILE: Path to the plain text input file
 
-    xmlfile : File name for the .xml output file
+    XMLFILE:       Path to the XML output file
     """
     if kwargs["debug"]:
         LOGGER.setLevel("DEBUG")
         LOGGER.info(
-            "Running readalongs prepare(lang={}, force-overwrite={}, inputfile={}, xmlfile={}).".format(
+            "Running readalongs prepare(lang={}, force-overwrite={}, plaintextfile={}, xmlfile={}).".format(
                 kwargs["language"],
                 kwargs["force_overwrite"],
-                kwargs["inputfile"],
+                kwargs["plaintextfile"],
                 kwargs["xmlfile"],
             )
         )
@@ -322,6 +337,6 @@ def prepare(**kwargs):
             "Output file %s exists already, use -f to overwrite." % xmlpath
         )
     filehandle, filename = create_input_tei(
-        kwargs["inputfile"], text_language=kwargs["language"], output_file=xmlpath
+        kwargs["plaintextfile"], text_language=kwargs["language"], output_file=xmlpath
     )
     LOGGER.info("Wrote {}".format(xmlpath))

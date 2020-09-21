@@ -32,10 +32,11 @@ Below is an example of a minimal implementation in a basic standalone html page.
 
         <body>
             <!-- Here is how you declare the Web Component -->
-            <readalong text="assets/sample.xml" alignment="assets/sample.smil" audio="assets/sample.wav"></readalong>
+            <read-along text="assets/sample.xml" alignment="assets/sample.smil" audio="assets/sample.wav"></read-along>
         </body>
         <!-- The last step needed is to import the package -->
-        <script scr='https://unpkg.com/@roedoejet/readalong@latest/dist/read-along.js'></script>
+       <script type="module" src='https://unpkg.com/@roedoejet/readalong@latest/dist/read-along/read-along.esm.js'></script>
+       <script nomodule src='https://unpkg.com/@roedoejet/readalong@latest/dist/read-along/read-along.js'></script>
     </html>
 
 
