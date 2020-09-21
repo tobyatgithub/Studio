@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TEI>
+    <!-- To exclude any element from alignment, add the do-not-align="true" attribute to
+         it, e.g., <p do-not-align="true">...</p>, or
+         <s>Some text <foo do-not-align="true">do not align this</foo> more text</s> -->
+    <text xml:lang="fra" id="t0">
+        <body id="t0b0">
+            <div type="page" id="t0b0d0">
+                <p id="t0b0d0p0">
+                    <s id="t0b0d0p0s0"><w id="t0b0d0p0s0w0">B AO N ZH UW ZH</w>.</s>
+                    <s id="t0b0d0p0s1"><w id="t0b0d0p0s1w0">ZH</w> <w id="t0b0d0p0s1w1">M</w>'<w id="t0b0d0p0s1w2">AA P P AH L</w> <w id="t0b0d0p0s1w3">EY ZH IY K</w> <w id="t0b0d0p0s1w4">ZH OW AA N IY</w>.</s>
+                    <s id="t0b0d0p0s2"><w id="t0b0d0p0s2w0">ZH</w> <w id="t0b0d0p0s2w1">S UW IY</w> <w id="t0b0d0p0s2w2">P ZH OW G ZH AA M OW ZH</w> <w id="t0b0d0p0s2w3">OW</w> <w id="t0b0d0p0s2w4">S EH N</w> <w id="t0b0d0p0s2w5">D</w> <w id="t0b0d0p0s2w6">L</w>'<w id="t0b0d0p0s2w7">EY K IY P</w> <w id="t0b0d0p0s2w8">D</w> <w id="t0b0d0p0s2w9">T AH K N AO L OW ZH IY</w> <w id="t0b0d0p0s2w10">P UW ZH</w> <w id="t0b0d0p0s2w11">L</w> <w id="t0b0d0p0s2w12">L AA N G</w> <w id="t0b0d0p0s2w13">OW T OW K T AO N</w> <w id="t0b0d0p0s2w14">OW</w> <w id="t0b0d0p0s2w15">K N ZH K</w>.</s>
+                </p>
+                <p id="t0b0d0p1">
+                    <s id="t0b0d0p1s0"><w id="t0b0d0p1s0w0">ZH</w>'<w id="t0b0d0p1s0w1">EY</w> <w id="t0b0d0p1s0w2">F EY T</w> <w id="t0b0d0p1s0w3">UW N</w> <w id="t0b0d0p1s0w4">B AO N</w> <w id="t0b0d0p1s0w5">P AA ZH T IY</w> <w id="t0b0d0p1s0w6">D</w> <w id="t0b0d0p1s0w7">M AA</w> <w id="t0b0d0p1s0w8">K AA ZH IY EH ZH</w> <w id="t0b0d0p1s0w9">AA N</w> <w id="t0b0d0p1s0w10">T ZH AA D UW K S IY AO N</w> <w id="t0b0d0p1s0w11">OW T AO M AA T IY K</w> <w id="t0b0d0p1s0w12">S T AA T IY S T IY K</w>, <w id="t0b0d0p1s0w13">M EH</w> <w id="t0b0d0p1s0w14">M EH N T EH N AA N</w> <w id="t0b0d0p1s0w15">S AH T T</w> <w id="t0b0d0p1s0w16">AA P P ZH OW SH</w> <w id="t0b0d0p1s0w17">EH</w> <w id="t0b0d0p1s0w18">D EY K L AA S EY</w> <w id="t0b0d0p1s0w19">P AA ZH</w> <w id="t0b0d0p1s0w20">L</w>'<w id="t0b0d0p1s0w21">AA P P ZH AA N T IY S AA ZH</w> <w id="t0b0d0p1s0w22">P ZH OW F AO N D</w>.</s>
+                    <s id="t0b0d0p1s1"><w id="t0b0d0p1s1w0">AA N</w> <w id="t0b0d0p1s1w1">S</w> <w id="t0b0d0p1s1w2">M AO M</w> <w id="t0b0d0p1s1w3">ZH</w> <w id="t0b0d0p1s1w4">T ZH AA V AA Y</w> <w id="t0b0d0p1s1w5">AA</w> <w id="t0b0d0p1s1w6">L</w>'<w id="t0b0d0p1s1w7">AA L IY NG AH M</w> <w id="t0b0d0p1s1w8">D UW</w> <w id="t0b0d0p1s1w9">HH AA N S AA ZH D</w> <w id="t0b0d0p1s1w10">D UW</w> <w id="t0b0d0p1s1w11">N UW N AA V UW T</w> <w id="t0b0d0p1s1w12">P UW ZH</w> <w id="t0b0d0p1s1w13">P ZH OW D UW IY ZH</w> <w id="t0b0d0p1s1w14">AO N</w> <w id="t0b0d0p1s1w15">K OW ZH P UW</w> <w id="t0b0d0p1s1w16">B IY L EH N G</w> <w id="t0b0d0p1s1w17">AA N G L EH</w>-<w id="t0b0d0p1s1w18">IY N UW K T IY T UW T</w>.</s>
+                    <s id="t0b0d0p1s2"><w id="t0b0d0p1s2w0">S</w> <w id="t0b0d0p1s2w1">K OW ZH P UW</w> <w id="t0b0d0p1s2w2">P AH ZH M AH T T ZH AA</w> <w id="t0b0d0p1s2w3">D</w>'<w id="t0b0d0p1s2w4">AA N T ZH EH N EY</w> <w id="t0b0d0p1s2w5">L AA</w> <w id="t0b0d0p1s2w6">T AA</w>, <w id="t0b0d0p1s2w7">N OW ZH AO N AA L</w> <w id="t0b0d0p1s2w8">UW</w> <w id="t0b0d0p1s2w9">S T AA T IY S T IY K</w>, <w id="t0b0d0p1s2w10">EH N S IY</w> <w id="t0b0d0p1s2w11">K</w> <w id="t0b0d0p1s2w12">D</w>'<w id="t0b0d0p1s2w13">OW T ZH</w> <w id="t0b0d0p1s2w14">AA P P L IY K AA S IY AO N</w> <w id="t0b0d0p1s2w15">D</w> <w id="t0b0d0p1s2w16">T ZH EY T AH M</w> <w id="t0b0d0p1s2w17">D UW</w> <w id="t0b0d0p1s2w18">L AA N G AA ZH</w> <w id="t0b0d0p1s2w19">N AA T UW ZH AH L</w>.</s>
+                </p>
+                <p id="t0b0d0p2">
+                    <s id="t0b0d0p2s0"><w id="t0b0d0p2s0w0">AA N</w> <w id="t0b0d0p2s0w1">P AA ZH AA L EH L</w>, <w id="t0b0d0p2s0w2">ZH</w>'<w id="t0b0d0p2s0w3">EY D</w> <w id="t0b0d0p2s0w4">AA</w> <w id="t0b0d0p2s0w5">EY K ZH IY ZH</w> <w id="t0b0d0p2s0w6">D</w> <w id="t0b0d0p2s0w7">T AH S T</w> <w id="t0b0d0p2s0w8">P UW ZH</w> <w id="t0b0d0p2s0w9">ZH AA N JH</w> <w id="t0b0d0p2s0w10">L</w> <w id="t0b0d0p2s0w11">ZH AH AA D AA L OW NG</w>-<w id="t0b0d0p2s0w12">S T UW D IY OW</w> <w id="t0b0d0p2s0w13">P L UW</w> <w id="t0b0d0p2s0w14">ZH OW B UW S T</w>.</s>
+                </p>
+            </div>
+        </body>
+    </text>
+</TEI>

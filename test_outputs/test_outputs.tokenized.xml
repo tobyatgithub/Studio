@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TEI>
+    <!-- To exclude any element from alignment, add the do-not-align="true" attribute to
+         it, e.g., <p do-not-align="true">...</p>, or
+         <s>Some text <foo do-not-align="true">do not align this</foo> more text</s> -->
+    <text xml:lang="fra">
+        <body>
+            <div type="page">
+                <p>
+                    <s><w>Bonjour</w>.</s>
+                    <s><w>Je</w> <w>m</w>'<w>appelle</w> <w>Éric</w> <w>Joanis</w>.</s>
+                    <s><w>Je</w> <w>suis</w> <w>programmeur</w> <w>au</w> <w>sein</w> <w>de</w> <w>l</w>'<w>équipe</w> <w>des</w> <w>technologies</w> <w>pour</w> <w>les</w> <w>langues</w> <w>autochtones</w> <w>au</w> <w>CNRC</w>.</s>
+                </p>
+                <p>
+                    <s><w>J</w>'<w>ai</w> <w>fait</w> <w>une</w> <w>bonne</w> <w>partie</w> <w>de</w> <w>ma</w> <w>carrière</w> <w>en</w> <w>traduction</w> <w>automatique</w> <w>statistique</w>, <w>mais</w> <w>maintenant</w> <w>cette</w> <w>approche</w> <w>est</w> <w>déclassée</w> <w>par</w> <w>l</w>'<w>apprentissage</w> <w>profond</w>.</s>
+                    <s><w>En</w> <w>ce</w> <w>moment</w> <w>je</w> <w>travaille</w> <w>à</w> <w>l</w>'<w>alignement</w> <w>du</w> <w>hansard</w> <w>du</w> <w>Nunavut</w> <w>pour</w> <w>produire</w> <w>un</w> <w>corpus</w> <w>bilingue</w> <w>anglais</w>-<w>inuktitut</w>.</s>
+                    <s><w>Ce</w> <w>corpus</w> <w>permettra</w> <w>d</w>'<w>entraîner</w> <w>la</w> <w>TA</w>, <w>neuronale</w> <w>ou</w> <w>statistique</w>, <w>ainsi</w> <w>que</w> <w>d</w>'<w>autres</w> <w>applications</w> <w>de</w> <w>traitement</w> <w>du</w> <w>langage</w> <w>naturel</w>.</s>
+                </p>
+                <p>
+                    <s><w>En</w> <w>parallèle</w>, <w>j</w>'<w>aide</w> <w>à</w> <w>écrire</w> <w>des</w> <w>tests</w> <w>pour</w> <w>rendre</w> <w>le</w> <w>ReadAlong</w>-<w>Studio</w> <w>plus</w> <w>robuste</w>.</s>
+                </p>
+            </div>
+        </body>
+    </text>
+</TEI>
