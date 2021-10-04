@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 ENV APPHOME /opt/readalong-studio
 ENV PORT 5000
@@ -29,10 +29,10 @@ RUN python3 -m pip install -r $APPHOME/requirements.txt
 COPY . $APPHOME
 WORKDIR $APPHOME
 # Get and install the latest g2p
-RUN git clone https://github.com/roedoejet/g2p.git
-RUN cd g2p && python3 -m pip install -e .
+RUN git clone https://github.com/roedoejet/g2p.git /opt/g2p
+RUN cd /opt/g2p && python3 -m pip install -e .
 # Install ReadAlong-Studio itself
-RUN python3 -m pip install -e .
+RUN cd /opt/readalong-studio && python3 -m pip install -e .
 
 # Run the default gui (on localhost:5000)
 CMD python3 ./run.py
