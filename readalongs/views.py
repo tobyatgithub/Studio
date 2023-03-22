@@ -26,9 +26,10 @@ from networkx import has_path
 
 from readalongs.app import app, socketio
 from readalongs.log import LOGGER
-from readalongs.utility import getLangs
+from readalongs.util import getLangs
 
-LANGS = getLangs()
+LANGS, LANG_NAMES = getLangs()
+
 ALLOWED_TEXT = ["txt", "xml", "docx"]
 ALLOWED_AUDIO = ["wav", "mp3"]
 ALLOWED_G2P = ["csv", "xlsx"]
@@ -90,7 +91,7 @@ def update_session_config(**kwargs) -> dict:
 
 @app.route("/")
 def home():
-    """Home View - go to Step 1 which is for uploading files"""
+    """ Home View - go to Step 1 which is for uploading files """
     return redirect(url_for("steps", step=1))
 
 
@@ -138,7 +139,7 @@ def remove_file():
 
 @app.route("/step/<int:step>")
 def steps(step):
-    """Go through steps"""
+    """ Go through steps """
     if step == 1:
         session.clear()
         session["temp_dir"] = mkdtemp()
